@@ -1,3 +1,4 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from random import randint
 
@@ -114,12 +115,12 @@ class PlayerUnit(BaseUnit):
         if damage > 0:
             return (
                 f'{self.name}, используя {self.weapon.name}, пробивает {target.armor.name}'
-                f'соперника и наносит {damage} урона'
+                f' соперника и наносит {damage} урона'
             )
 
         return (
             f'{self.name}, используя {self.weapon.name}, наносит удар, но {target.armor.name}'
-            f'соперника его останавливает'
+            f' соперника его останавливает'
         )
 
 
@@ -149,6 +150,6 @@ class EnemyUnit(BaseUnit):
             )
 
         return (
-                f'{self.name}, используя {self.weapon.name}, наносит удар, но'
+                f'{self.name}, используя {self.weapon.name}, наносит удар, но '
                 f'Ваш(а) {target.armor.name} его останавливает'
             )

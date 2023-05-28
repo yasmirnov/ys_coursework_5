@@ -1,7 +1,7 @@
 from unit import BaseUnit
 
 
-class BaseSingleton:
+class BaseSingleton(type):
 
     _instances = {}
 
@@ -92,6 +92,9 @@ class Arena(metaclass=BaseSingleton):
         self.game_is_running = False
         return self.battle_result
 
+    def stop_game(self):
+        return self._end_game()
+
     def player_hit(self):
         """ КНОПКА УДАР ИГРОКА -> return result: str
         получаем результат от функции self.player.hit
@@ -100,7 +103,7 @@ class Arena(metaclass=BaseSingleton):
         """
         result = self.player.hit(self.enemy)
         turn_result = self.next_turn()
-        return f'{result}<br>{turn_result}'
+        return f'{result} <br> {turn_result}'
 
     def player_use_skill(self):
         """ КНОПКА ИГРОК ИСПОЛЬЗУЕТ УМЕНИЕ
@@ -110,4 +113,4 @@ class Arena(metaclass=BaseSingleton):
         """
         result = self.player.use_skill(self.enemy)
         turn_result = self.next_turn()
-        return f'{result}<br>{turn_result}'
+        return f'{result} <br> {turn_result}'
